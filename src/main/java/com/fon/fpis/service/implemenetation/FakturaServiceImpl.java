@@ -36,12 +36,11 @@ public class FakturaServiceImpl implements FakturaService {
     @Override
     public List<FakturaDTO> pronadjiFakture(String datumPrometa) {
         try {
-            System.out.println("ovo je datum "+java.sql.Date.valueOf(datumPrometa));
             return FakturaMapper.entitiesToFakturaDTOs(fakturaRepository.findByDatumPrometaFakture(
                     new SimpleDateFormat("yyyy-MM-dd").parse(datumPrometa)
                    ));
 //        java.sql.Date.valueOf(datumPrometa)
-        } catch (ParseException e) {
+        } catch (Exception e) {
             return null;
         }
     }
@@ -52,7 +51,7 @@ public class FakturaServiceImpl implements FakturaService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public boolean zapamtiFakturu(FakturaDTO fakturaDto) {
         Faktura faktura =fakturaRepository.save(FakturaMapper.dtoToFaktura(fakturaDto));
 //        prethodna linija-snimi sve o fakturi ali bez liste stavki, jer u dtoToFaktura nema setovanje liste.
