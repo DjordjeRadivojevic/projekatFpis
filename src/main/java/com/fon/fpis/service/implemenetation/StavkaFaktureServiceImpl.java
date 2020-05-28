@@ -7,9 +7,12 @@ import com.fon.fpis.domain.model.StavkaFakture;
 import com.fon.fpis.service.interfaces.StavkaFaktureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
+@Transactional
 public class StavkaFaktureServiceImpl implements StavkaFaktureService {
 
     @Autowired
