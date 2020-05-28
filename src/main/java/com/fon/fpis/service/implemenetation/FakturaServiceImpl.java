@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class FakturaServiceImpl implements FakturaService {
 
     @Autowired
@@ -39,7 +39,6 @@ public class FakturaServiceImpl implements FakturaService {
             return FakturaMapper.entitiesToFakturaDTOs(fakturaRepository.findByDatumPrometaFakture(
                     new SimpleDateFormat("yyyy-MM-dd").parse(datumPrometa)
                    ));
-//        java.sql.Date.valueOf(datumPrometa)
         } catch (Exception e) {
             return null;
         }

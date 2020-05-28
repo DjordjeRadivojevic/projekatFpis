@@ -3,14 +3,16 @@ package com.fon.fpis.service.implemenetation;
 import com.fon.fpis.dao.KupacRepository;
 import com.fon.fpis.domain.dto.KupacDTO;
 import com.fon.fpis.domain.mapper.KupacMapper;
-import com.fon.fpis.domain.model.Kupac;
 import com.fon.fpis.service.interfaces.AdresaService;
 import com.fon.fpis.service.interfaces.KupacService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
+@Transactional
 public class KupacServiceImpl implements KupacService {
 
     @Autowired
